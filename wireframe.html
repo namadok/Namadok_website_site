@@ -1,0 +1,791 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Namadok Group — Ecommerce Brand Management & Growth · Wireframe</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --gray-100: #F9F9F9;
+    --gray-200: #EBEBEB;
+    --gray-300: #D0D0D0;
+    --gray-400: #ABABAB;
+    --gray-500: #777;
+    --gray-700: #3A3A3A;
+    --gray-900: #111;
+    --placeholder: #DADADF;
+    --placeholder-dark: #BBBBC0;
+    --annotation: #FF4D4D;
+  }
+
+  body {
+    font-family: 'Courier New', monospace;
+    background: #F0F0F0;
+    color: var(--gray-900);
+  }
+
+  /* ── WIREFRAME FRAME ── */
+  .wf-header {
+    background: #fff;
+    border-bottom: 2px solid var(--gray-900);
+    padding: 20px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 999;
+  }
+
+  .wf-header h1 { font-size: 13px; letter-spacing: .15em; text-transform: uppercase; }
+  .wf-header span { font-size: 11px; color: var(--gray-500); }
+
+  .wf-legend {
+    background: #fff;
+    border: 1px solid var(--gray-300);
+    border-radius: 4px;
+    padding: 16px 20px;
+    position: fixed;
+    top: 80px;
+    right: 24px;
+    width: 180px;
+    z-index: 100;
+    font-size: 10px;
+  }
+  .wf-legend h3 { font-size: 9px; letter-spacing: .2em; text-transform: uppercase; margin-bottom: 10px; color: var(--gray-500); }
+  .legend-item { display: flex; align-items: center; gap: 8px; margin-bottom: 6px; }
+  .legend-swatch { width: 16px; height: 16px; border-radius: 2px; flex-shrink: 0; }
+
+  /* ── PAGE CONTAINER ── */
+  .page {
+    max-width: 1260px;
+    margin: 40px auto;
+    background: #fff;
+    border: 2px solid var(--gray-900);
+    box-shadow: 6px 6px 0 var(--gray-400);
+  }
+
+  /* ── SECTION LABELS ── */
+  .section-label {
+    position: absolute;
+    left: -2px;
+    top: 20px;
+    background: var(--gray-900);
+    color: #fff;
+    font-size: 9px;
+    letter-spacing: .15em;
+    text-transform: uppercase;
+    padding: 4px 8px;
+    white-space: nowrap;
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+    height: fit-content;
+  }
+
+  .annotation {
+    display: inline-block;
+    background: #FFF3F3;
+    border: 1px solid var(--annotation);
+    color: var(--annotation);
+    font-size: 9px;
+    letter-spacing: .08em;
+    padding: 2px 6px;
+    border-radius: 2px;
+    margin-left: 8px;
+    vertical-align: middle;
+  }
+
+  /* ── PLACEHOLDERS ── */
+  .ph-box {
+    background: var(--placeholder);
+    border: 1px dashed var(--gray-400);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--gray-500);
+    font-size: 10px;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+  }
+
+  .ph-text-lg   { height: 48px; background: var(--gray-300); border-radius: 3px; margin-bottom: 12px; }
+  .ph-text-md   { height: 28px; background: var(--gray-200); border-radius: 3px; margin-bottom: 8px; }
+  .ph-text-sm   { height: 16px; background: var(--gray-200); border-radius: 3px; margin-bottom: 6px; }
+  .ph-text-xs   { height: 12px; background: var(--gray-200); border-radius: 3px; margin-bottom: 6px; }
+  .ph-line      { height: 1px; background: var(--gray-300); margin: 12px 0; }
+
+  .wf-section   { position: relative; padding: 0 60px; }
+
+  /* ══════════════════════
+     01 · NAVIGATION
+  ══════════════════════ */
+  .wf-nav {
+    border-bottom: 1px solid var(--gray-300);
+    padding: 0 60px;
+    height: 72px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+  }
+  .nav-logo {
+    width: 160px;
+    height: 36px;
+    background: var(--gray-300);
+    border-radius: 2px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 9px;
+    letter-spacing: .1em;
+    color: var(--gray-500);
+    text-transform: uppercase;
+  }
+  .nav-links {
+    display: flex;
+    gap: 40px;
+  }
+  .nav-link-ph {
+    width: 60px;
+    height: 12px;
+    background: var(--gray-200);
+    border-radius: 2px;
+  }
+  .nav-cta-ph {
+    width: 100px;
+    height: 32px;
+    border: 1.5px solid var(--gray-700);
+    border-radius: 2px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 9px;
+    letter-spacing: .12em;
+    color: var(--gray-700);
+    text-transform: uppercase;
+  }
+
+  /* ══════════════════════
+     02 · HERO
+  ══════════════════════ */
+  .wf-hero {
+    background: #1A1A1A;
+    height: 720px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 24px;
+    position: relative;
+    padding: 80px;
+    text-align: center;
+  }
+  .hero-eyebrow {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 8px;
+  }
+  .hero-line { width: 60px; height: 1px; background: var(--gray-500); }
+  .hero-eyebrow-text { height: 10px; width: 140px; background: #555; border-radius: 2px; }
+  .hero-headline { height: 80px; width: 700px; background: #444; border-radius: 4px; }
+  .hero-subhead { height: 18px; width: 500px; background: #333; border-radius: 3px; }
+  .hero-subhead-2 { height: 18px; width: 380px; background: #333; border-radius: 3px; }
+  .hero-cta-group { display: flex; gap: 16px; margin-top: 8px; }
+  .hero-cta-primary {
+    width: 160px; height: 48px;
+    border: 1.5px solid #AA7A30;
+    background: transparent;
+    border-radius: 2px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 9px; letter-spacing: .15em; color: #AA7A30; text-transform: uppercase;
+  }
+  .hero-cta-secondary {
+    width: 140px; height: 48px;
+    background: #333; border-radius: 2px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 9px; letter-spacing: .15em; color: #888; text-transform: uppercase;
+  }
+  .hero-scroll-indicator {
+    position: absolute;
+    bottom: 32px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+  }
+  .scroll-text { font-size: 8px; letter-spacing: .2em; color: #666; text-transform: uppercase; }
+  .scroll-line { width: 1px; height: 40px; background: #555; }
+
+  /* Annotation badges in hero */
+  .wf-badge {
+    position: absolute;
+    background: rgba(255,255,255,0.08);
+    border: 1px dashed #666;
+    border-radius: 3px;
+    font-size: 9px;
+    color: #888;
+    padding: 4px 10px;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+  }
+
+  /* ══════════════════════
+     03 · POSITIONING / ABOUT
+  ══════════════════════ */
+  .wf-about {
+    padding: 100px 60px;
+    border-top: 1px solid var(--gray-200);
+    position: relative;
+  }
+  .about-inner {
+    display: grid;
+    grid-template-columns: 1fr 1px 1fr;
+    gap: 0 60px;
+    align-items: start;
+  }
+  .divider-v { background: var(--gray-300); }
+  .stat-block { padding-right: 60px; }
+  .stat-number { height: 72px; width: 200px; background: var(--gray-300); border-radius: 3px; margin-bottom: 16px; }
+  .stat-label  { height: 12px; width: 160px; background: var(--gray-200); border-radius: 2px; }
+
+  /* ══════════════════════
+     04 · SERVICES
+  ══════════════════════ */
+  .wf-services {
+    padding: 100px 60px;
+    background: var(--gray-100);
+    border-top: 1px solid var(--gray-200);
+    position: relative;
+  }
+  .section-header { margin-bottom: 60px; }
+  .section-number { height: 12px; width: 24px; background: var(--gray-400); border-radius: 2px; margin-bottom: 12px; }
+  .section-title  { height: 36px; width: 280px; background: var(--gray-300); border-radius: 3px; }
+  .section-rule   { height: 1px; background: var(--gray-300); margin: 16px 0 0; width: 60px; }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+    border: 1px solid var(--gray-300);
+  }
+  .service-card {
+    background: #fff;
+    padding: 40px 36px;
+    border: 1px solid var(--gray-200);
+  }
+  .service-icon { width: 36px; height: 36px; background: var(--gray-300); border-radius: 50%; margin-bottom: 20px; }
+  .service-num  { height: 12px; width: 24px; background: var(--placeholder-dark); border-radius: 2px; margin-bottom: 14px; }
+  .service-title { height: 20px; width: 140px; background: var(--gray-300); border-radius: 2px; margin-bottom: 12px; }
+  .service-text  { display: flex; flex-direction: column; gap: 6px; }
+
+  /* ══════════════════════
+     05 · WHY NAMADOK
+  ══════════════════════ */
+  .wf-why {
+    padding: 100px 60px;
+    background: #1A1A1A;
+    border-top: 1px solid #333;
+    position: relative;
+  }
+  .why-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 60px;
+    margin-top: 60px;
+  }
+  .why-item {}
+  .why-accent { width: 32px; height: 2px; background: #AA7A30; margin-bottom: 20px; }
+  .why-title  { height: 20px; width: 120px; background: #444; border-radius: 2px; margin-bottom: 12px; }
+
+  /* ══════════════════════
+     06 · STATS BAND
+  ══════════════════════ */
+  .wf-stats {
+    padding: 60px;
+    background: #fff;
+    border-top: 1px solid var(--gray-200);
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1px;
+    background: var(--gray-200);
+    position: relative;
+  }
+  .stat-item {
+    background: #fff;
+    padding: 40px 36px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .stat-big  { height: 44px; width: 120px; background: var(--gray-300); border-radius: 3px; }
+  .stat-desc { height: 12px; width: 100px; background: var(--gray-200); border-radius: 2px; }
+
+  /* ══════════════════════
+     07 · CONTACT / CTA
+  ══════════════════════ */
+  .wf-contact {
+    padding: 120px 60px;
+    background: var(--gray-100);
+    border-top: 1px solid var(--gray-200);
+    text-align: center;
+    position: relative;
+  }
+  .contact-headline { height: 52px; width: 560px; background: var(--gray-300); border-radius: 3px; margin: 0 auto 20px; }
+  .contact-sub      { height: 16px; width: 400px; background: var(--gray-200); border-radius: 2px; margin: 0 auto 40px; }
+  .contact-btn      { width: 180px; height: 52px; border: 2px solid var(--gray-700); border-radius: 2px; display: inline-flex; align-items: center; justify-content: center; font-size: 9px; letter-spacing: .15em; text-transform: uppercase; color: var(--gray-700); }
+
+  /* ══════════════════════
+     08 · FOOTER
+  ══════════════════════ */
+  .wf-footer {
+    border-top: 1px solid var(--gray-300);
+    padding: 48px 60px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 40px;
+    align-items: start;
+    position: relative;
+  }
+  .footer-logo { width: 120px; height: 28px; background: var(--gray-300); border-radius: 2px; }
+  .footer-links { display: flex; flex-direction: column; gap: 10px; }
+
+  /* ══════════════════════
+     SPACING RULERS
+  ══════════════════════ */
+  .ruler-h {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    position: absolute;
+    left: 0;
+    right: 0;
+  }
+  .ruler-line { flex: 1; height: 1px; background: #E0E0FF; }
+  .ruler-label { font-size: 8px; color: #9999CC; padding: 0 6px; white-space: nowrap; letter-spacing: .08em; }
+
+  /* Grid overlay */
+  .grid-overlay {
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-image: repeating-linear-gradient(
+      90deg, rgba(100,100,200,0.04) 0px, rgba(100,100,200,0.04) 1px, transparent 1px, transparent calc(100% / 12)
+    );
+    pointer-events: none;
+  }
+
+  /* ══════════════════════
+     FLOW ARROWS (decorative)
+  ══════════════════════ */
+  .flow-arrow {
+    text-align: center;
+    padding: 12px;
+    color: var(--gray-400);
+    font-size: 18px;
+    background: #fff;
+  }
+
+</style>
+</head>
+<body>
+
+<!-- ── LEGEND ── -->
+<div class="wf-legend">
+  <h3>Legend</h3>
+  <div class="legend-item">
+    <div class="legend-swatch" style="background:#1A1A1A;border:1px solid #aaa;"></div>
+    <span>Dark / Navy section</span>
+  </div>
+  <div class="legend-item">
+    <div class="legend-swatch" style="background:#F0F0F0;border:1px dashed #ccc;"></div>
+    <span>Light / White section</span>
+  </div>
+  <div class="legend-item">
+    <div class="legend-swatch" style="background:#DADADF;border:1px solid #bbb;"></div>
+    <span>Content placeholder</span>
+  </div>
+  <div class="legend-item">
+    <div class="legend-swatch" style="background:#AA7A30;"></div>
+    <span>Gold accent element</span>
+  </div>
+  <div class="legend-item">
+    <div class="legend-swatch" style="background:#FFF3F3;border:1px solid #FF4D4D;"></div>
+    <span>Annotation note</span>
+  </div>
+  <div style="margin-top:14px;padding-top:10px;border-top:1px solid #eee;">
+    <p style="font-size:9px;color:#999;line-height:1.6;">Wireframe v1.1<br>Namadok Group — Ecommerce Brand Mgmt &amp; Growth · AI-Powered<br>All sections single-page scroll</p>
+  </div>
+</div>
+
+<!-- ── TOP LABEL ── -->
+<div class="wf-header">
+  <h1>Namadok Group — Ecommerce Brand Management & Growth · Wireframe</h1>
+  <span>v1.1 · Single-Page Scroll Layout · 1280px Breakpoint · AI-Powered</span>
+</div>
+
+<!-- ══════════════════════ PAGE ══════════════════════ -->
+<div class="page">
+
+  <!-- ─── SECTION 01: NAVIGATION ─── -->
+  <div style="position:relative;">
+    <span style="position:absolute;top:0;left:0;background:#111;color:#fff;font-family:'Courier New',monospace;font-size:9px;letter-spacing:.15em;padding:3px 10px;z-index:10;">01 · NAVIGATION</span>
+    <div class="wf-nav">
+      <div class="nav-logo">[ NAMADOK GROUP LOGO ]</div>
+      <div class="nav-links">
+        <div class="nav-link-ph"></div>
+        <div class="nav-link-ph"></div>
+        <div class="nav-link-ph"></div>
+        <div class="nav-link-ph"></div>
+      </div>
+      <div class="nav-cta-ph">[ CTA Button ]</div>
+    </div>
+    <!-- Annotations -->
+    <div style="background:#FFFBF0;border-top:1px dashed #CCA050;padding:8px 60px;font-size:9px;color:#996620;letter-spacing:.05em;display:flex;gap:40px;">
+      <span>→ Logo: Left-aligned, links to #hero</span>
+      <span>→ Nav links: How It Works · Services · Results · Contact</span>
+      <span>→ CTA: "Grow My Brand" — outlined, gold border on hover</span>
+      <span>→ Behaviour: Transparent over hero, white bg on scroll</span>
+    </div>
+  </div>
+
+  <!-- ─── SECTION 02: HERO ─── -->
+  <div style="position:relative;">
+    <span style="position:absolute;top:0;left:0;background:#111;color:#fff;font-family:'Courier New',monospace;font-size:9px;letter-spacing:.15em;padding:3px 10px;z-index:10;">02 · HERO</span>
+    <div class="wf-hero">
+      <div class="hero-eyebrow">
+        <div class="hero-line"></div>
+        <div class="hero-eyebrow-text"></div>
+        <div class="hero-line"></div>
+      </div>
+      <div class="hero-headline"></div>
+      <div style="display:flex;flex-direction:column;align-items:center;gap:8px;width:100%;">
+        <div class="hero-subhead"></div>
+        <div class="hero-subhead-2"></div>
+      </div>
+      <div class="hero-cta-group">
+        <div class="hero-cta-primary">[ Primary CTA ]</div>
+        <div class="hero-cta-secondary">[ Secondary Link ]</div>
+      </div>
+      <!-- Floating annotations -->
+      <div class="wf-badge" style="top:60px;right:60px;">Full-screen · 100vh</div>
+      <div class="wf-badge" style="bottom:80px;right:60px;">Dark navy bg (#1A2235)</div>
+      <div class="wf-badge" style="top:60px;left:60px;">AI pulse / data-flow animation</div>
+      <!-- Scroll indicator -->
+      <div class="hero-scroll-indicator">
+        <div class="scroll-text">Scroll</div>
+        <div class="scroll-line"></div>
+      </div>
+    </div>
+    <div style="background:#1A1A1A;border-top:1px dashed #444;padding:8px 60px;font-size:9px;color:#888;letter-spacing:.05em;display:flex;gap:40px;">
+      <span>→ Eyebrow: "Ecommerce Brand Management & Growth" — flanking lines motif</span>
+      <span>→ Headline: "Scale Smarter." or "Your Brand. Engineered to Grow." — editorial serif, ~80px</span>
+      <span>→ Subhead: "AI-powered management and growth for ecommerce brands ready to lead their market."</span>
+      <span>→ Primary CTA: "Grow My Brand" · Secondary: "See Our Work" · Scroll indicator fades on scroll</span>
+    </div>
+  </div>
+
+  <!-- ─── SECTION 03: ABOUT / POSITIONING ─── -->
+  <div style="position:relative;">
+    <span style="position:absolute;top:0;left:0;background:#111;color:#fff;font-family:'Courier New',monospace;font-size:9px;letter-spacing:.15em;padding:3px 10px;z-index:10;">03 · ABOUT / POSITIONING</span>
+    <div class="wf-about">
+      <div class="grid-overlay"></div>
+      <div class="about-inner">
+        <!-- LEFT: Pull stat or bold statement -->
+        <div class="stat-block">
+          <div class="stat-number"></div>
+          <div class="stat-label"></div>
+          <div style="margin-top:24px;">
+            <div class="ph-text-md" style="width:90%;"></div>
+            <div class="ph-text-md" style="width:70%;"></div>
+          </div>
+        </div>
+        <!-- DIVIDER -->
+        <div class="divider-v"></div>
+        <!-- RIGHT: Company description -->
+        <div style="padding-left:60px;">
+          <div class="section-number"></div>
+          <div class="section-title"></div>
+          <div class="section-rule"></div>
+          <div style="margin-top:28px;display:flex;flex-direction:column;gap:8px;">
+            <div class="ph-text-xs" style="width:100%;"></div>
+            <div class="ph-text-xs" style="width:95%;"></div>
+            <div class="ph-text-xs" style="width:88%;"></div>
+            <div class="ph-text-xs" style="width:92%;"></div>
+          </div>
+          <div style="margin-top:20px;display:flex;flex-direction:column;gap:8px;">
+            <div class="ph-text-xs" style="width:97%;"></div>
+            <div class="ph-text-xs" style="width:80%;"></div>
+            <div class="ph-text-xs" style="width:90%;"></div>
+          </div>
+          <div style="margin-top:28px;">
+            <div style="width:120px;height:36px;border:1.5px solid #333;display:flex;align-items:center;justify-content:center;font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:#555;">[ Learn More ]</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div style="background:#FFFBF0;border-top:1px dashed #CCA050;padding:8px 60px;font-size:9px;color:#996620;letter-spacing:.05em;display:flex;gap:40px;">
+      <span>→ Left: Bold pull stat — e.g. "3× avg. revenue growth for managed brands" — large numeral, editorial weight</span>
+      <span>→ Right: 2-paragraph positioning — who we are, AI-powered approach, who we serve (DTC & ecommerce brands)</span>
+      <span>→ Ghost CTA: "See How It Works" · Vertical rule separates columns</span>
+    </div>
+  </div>
+
+  <!-- ─── SECTION 04: SERVICES ─── -->
+  <div style="position:relative;">
+    <span style="position:absolute;top:0;left:0;background:#111;color:#fff;font-family:'Courier New',monospace;font-size:9px;letter-spacing:.15em;padding:3px 10px;z-index:10;">04 · SERVICES</span>
+    <div class="wf-services">
+      <div class="grid-overlay"></div>
+      <div class="section-header">
+        <div class="section-number"></div>
+        <div class="section-title"></div>
+        <div class="section-rule"></div>
+      </div>
+      <div class="services-grid">
+        <div class="service-card">
+          <div class="service-num"></div>
+          <div class="service-title"></div>
+          <div class="service-text">
+            <div class="ph-text-xs" style="width:100%;"></div>
+            <div class="ph-text-xs" style="width:90%;"></div>
+            <div class="ph-text-xs" style="width:95%;"></div>
+            <div class="ph-text-xs" style="width:75%;"></div>
+          </div>
+          <div style="margin-top:24px;width:80px;height:1px;background:#C8882A;"></div>
+          <div style="margin-top:10px;height:10px;width:70px;background:#DDD;border-radius:2px;"></div>
+        </div>
+        <div class="service-card">
+          <div class="service-num"></div>
+          <div class="service-title"></div>
+          <div class="service-text">
+            <div class="ph-text-xs" style="width:100%;"></div>
+            <div class="ph-text-xs" style="width:85%;"></div>
+            <div class="ph-text-xs" style="width:92%;"></div>
+            <div class="ph-text-xs" style="width:78%;"></div>
+          </div>
+          <div style="margin-top:24px;width:80px;height:1px;background:#C8882A;"></div>
+          <div style="margin-top:10px;height:10px;width:70px;background:#DDD;border-radius:2px;"></div>
+        </div>
+        <div class="service-card">
+          <div class="service-num"></div>
+          <div class="service-title"></div>
+          <div class="service-text">
+            <div class="ph-text-xs" style="width:100%;"></div>
+            <div class="ph-text-xs" style="width:88%;"></div>
+            <div class="ph-text-xs" style="width:96%;"></div>
+            <div class="ph-text-xs" style="width:70%;"></div>
+          </div>
+          <div style="margin-top:24px;width:80px;height:1px;background:#C8882A;"></div>
+          <div style="margin-top:10px;height:10px;width:70px;background:#DDD;border-radius:2px;"></div>
+        </div>
+      </div>
+    </div>
+    <div style="background:#FFFBF0;border-top:1px dashed #CCA050;padding:8px 60px;font-size:9px;color:#996620;letter-spacing:.05em;display:flex;gap:40px;">
+      <span>→ 3-column grid — card 01: Brand Management · card 02: Growth Marketing · card 03: AI Automation</span>
+      <span>→ Card 01: Full brand strategy, positioning, identity, and marketplace management (Amazon, Shopify, etc.)</span>
+      <span>→ Card 02: Performance marketing — paid social, search, email, CRO, influencer orchestration</span>
+      <span>→ Card 03: AI-powered automation — workflows, reporting, content ops, predictive analytics · Hover: gold border</span>
+    </div>
+  </div>
+
+  <!-- ─── SECTION 05: STATS BAND ─── -->
+  <div style="position:relative;">
+    <span style="position:absolute;top:0;left:0;background:#111;color:#fff;font-family:'Courier New',monospace;font-size:9px;letter-spacing:.15em;padding:3px 10px;z-index:10;">05 · STATS BAND</span>
+    <div class="wf-stats">
+      <div class="stat-item">
+        <div class="stat-big"></div>
+        <div class="stat-desc"></div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-big"></div>
+        <div class="stat-desc"></div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-big"></div>
+        <div class="stat-desc"></div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-big"></div>
+        <div class="stat-desc"></div>
+      </div>
+    </div>
+    <div style="background:#FFFBF0;border-top:1px dashed #CCA050;padding:8px 60px;font-size:9px;color:#996620;letter-spacing:.05em;display:flex;gap:40px;">
+      <span>→ Stat 01: "$X M+" — Combined revenue driven for partner brands</span>
+      <span>→ Stat 02: "X+" — Ecommerce brands actively managed</span>
+      <span>→ Stat 03: "X+" — AI automations deployed across client operations</span>
+      <span>→ Stat 04: "X" — Markets & platforms served (Amazon, Shopify, TikTok Shop…) · Large Cormorant Garamond numerals</span>
+    </div>
+  </div>
+
+  <!-- ─── SECTION 06: WHY NAMADOK ─── -->
+  <div style="position:relative;">
+    <span style="position:absolute;top:0;left:0;background:#111;color:#fff;font-family:'Courier New',monospace;font-size:9px;letter-spacing:.15em;padding:3px 10px;z-index:10;">06 · WHY NAMADOK — THE AI ADVANTAGE</span>
+    <div class="wf-why">
+      <div class="section-header">
+        <div style="height:12px;width:24px;background:#555;border-radius:2px;margin-bottom:12px;"></div>
+        <div style="height:36px;width:320px;background:#444;border-radius:3px;"></div>
+        <div style="height:1px;background:#C8882A;margin:16px 0 0;width:60px;"></div>
+      </div>
+      <div class="why-grid">
+        <div class="why-item">
+          <div class="why-accent"></div>
+          <div class="why-title"></div>
+          <div style="display:flex;flex-direction:column;gap:6px;">
+            <div style="height:10px;width:100%;background:#333;border-radius:2px;"></div>
+            <div style="height:10px;width:90%;background:#333;border-radius:2px;"></div>
+            <div style="height:10px;width:85%;background:#333;border-radius:2px;"></div>
+          </div>
+        </div>
+        <div class="why-item">
+          <div class="why-accent"></div>
+          <div class="why-title"></div>
+          <div style="display:flex;flex-direction:column;gap:6px;">
+            <div style="height:10px;width:100%;background:#333;border-radius:2px;"></div>
+            <div style="height:10px;width:88%;background:#333;border-radius:2px;"></div>
+            <div style="height:10px;width:92%;background:#333;border-radius:2px;"></div>
+          </div>
+        </div>
+        <div class="why-item">
+          <div class="why-accent"></div>
+          <div class="why-title"></div>
+          <div style="display:flex;flex-direction:column;gap:6px;">
+            <div style="height:10px;width:100%;background:#333;border-radius:2px;"></div>
+            <div style="height:10px;width:82%;background:#333;border-radius:2px;"></div>
+            <div style="height:10px;width:95%;background:#333;border-radius:2px;"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div style="background:#111;border-top:1px dashed #444;padding:8px 60px;font-size:9px;color:#888;letter-spacing:.05em;display:flex;gap:40px;">
+      <span>→ Dark section for visual contrast (mirrors hero)</span>
+      <span>→ Column 01: "Ecommerce-Native" — built for DTC, marketplace, and omnichannel brands, not generic consulting</span>
+      <span>→ Column 02: "AI-First Operations" — automations replace manual overhead, compounding gains over time</span>
+      <span>→ Column 03: "Full-Funnel Ownership" — brand, performance, and tech under one roof, one accountability layer</span>
+    </div>
+  </div>
+
+  <!-- ─── SECTION 07: CONTACT CTA ─── -->
+  <div style="position:relative;">
+    <span style="position:absolute;top:0;left:0;background:#111;color:#fff;font-family:'Courier New',monospace;font-size:9px;letter-spacing:.15em;padding:3px 10px;z-index:10;">07 · CONTACT / CTA</span>
+    <div class="wf-contact">
+      <div class="grid-overlay"></div>
+      <div style="display:flex;align-items:center;gap:20px;justify-content:center;margin-bottom:24px;">
+        <div style="flex:1;max-width:100px;height:1px;background:#CCC;"></div>
+        <div style="height:10px;width:140px;background:#DDD;border-radius:2px;"></div>
+        <div style="flex:1;max-width:100px;height:1px;background:#CCC;"></div>
+      </div>
+      <div class="contact-headline"></div>
+      <div class="contact-sub"></div>
+      <div class="contact-btn">[ Get In Touch ]</div>
+      <div style="margin-top:48px;display:flex;justify-content:center;gap:40px;">
+        <div style="height:12px;width:120px;background:#DDD;border-radius:2px;"></div>
+        <div style="height:12px;width:120px;background:#DDD;border-radius:2px;"></div>
+        <div style="height:12px;width:120px;background:#DDD;border-radius:2px;"></div>
+      </div>
+    </div>
+    <div style="background:#FFFBF0;border-top:1px dashed #CCA050;padding:8px 60px;font-size:9px;color:#996620;letter-spacing:.05em;display:flex;gap:40px;">
+      <span>→ Centered layout, generous vertical space</span>
+      <span>→ Eyebrow: "Ready to grow?" — flanking lines motif</span>
+      <span>→ Headline: "Let's Build Your Brand's Next Chapter." · Sub: "One conversation. A clear growth plan."</span>
+      <span>→ CTA: "Book a Brand Audit" — primary action · Below: email · LinkedIn · office location (optional)</span>
+    </div>
+  </div>
+
+  <!-- ─── SECTION 08: FOOTER ─── -->
+  <div style="position:relative;">
+    <span style="position:absolute;top:0;left:0;background:#111;color:#fff;font-family:'Courier New',monospace;font-size:9px;letter-spacing:.15em;padding:3px 10px;z-index:10;">08 · FOOTER</span>
+    <div class="wf-footer" style="background:#F9F9F9;">
+      <div>
+        <div class="footer-logo"></div>
+        <div style="margin-top:12px;display:flex;flex-direction:column;gap:6px;">
+          <div style="height:10px;width:160px;background:#DDD;border-radius:2px;"></div>
+          <div style="height:10px;width:130px;background:#DDD;border-radius:2px;"></div>
+        </div>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px 40px;">
+        <div class="footer-links">
+          <div style="height:10px;width:50px;background:#CCC;border-radius:2px;margin-bottom:6px;"></div>
+          <div style="height:10px;width:80px;background:#DDD;border-radius:2px;"></div>
+          <div style="height:10px;width:70px;background:#DDD;border-radius:2px;margin-top:6px;"></div>
+          <div style="height:10px;width:60px;background:#DDD;border-radius:2px;margin-top:6px;"></div>
+        </div>
+        <div class="footer-links">
+          <div style="height:10px;width:50px;background:#CCC;border-radius:2px;margin-bottom:6px;"></div>
+          <div style="height:10px;width:90px;background:#DDD;border-radius:2px;"></div>
+          <div style="height:10px;width:65px;background:#DDD;border-radius:2px;margin-top:6px;"></div>
+        </div>
+      </div>
+      <div style="text-align:right;">
+        <div style="height:10px;width:160px;background:#DDD;border-radius:2px;margin-left:auto;"></div>
+        <div style="margin-top:16px;display:flex;justify-content:flex-end;gap:12px;">
+          <div style="width:28px;height:28px;background:#DDD;border-radius:50%;"></div>
+          <div style="width:28px;height:28px;background:#DDD;border-radius:50%;"></div>
+        </div>
+      </div>
+    </div>
+    <div style="border-top:1px solid #E0E0E0;padding:16px 60px;display:flex;justify-content:space-between;background:#F9F9F9;">
+      <div style="height:10px;width:200px;background:#DDD;border-radius:2px;"></div>
+      <div style="height:10px;width:120px;background:#DDD;border-radius:2px;"></div>
+    </div>
+    <div style="background:#FFFBF0;border-top:1px dashed #CCA050;padding:8px 60px;font-size:9px;color:#996620;letter-spacing:.05em;display:flex;gap:40px;">
+      <span>→ 3-column: Logo + "Ecommerce Brand Management & Growth, Powered by AI" · Nav links · Contact + LinkedIn/social</span>
+      <span>→ Nav cols: Services (Brand Mgmt · Growth Marketing · AI Automation) · Company (About · Results · Contact)</span>
+      <span>→ Bottom strip: Copyright © Namadok Group · Privacy Policy · Built with AI</span>
+    </div>
+  </div>
+
+</div><!-- end .page -->
+
+<!-- ── PAGE SUMMARY ── -->
+<div style="max-width:1260px;margin:40px auto 80px;background:#fff;border:1px solid #DDD;padding:40px 60px;font-family:'Courier New',monospace;">
+  <h2 style="font-size:11px;letter-spacing:.2em;text-transform:uppercase;margin-bottom:24px;border-bottom:1px solid #EEE;padding-bottom:12px;">Wireframe Summary</h2>
+  <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:40px;font-size:10px;color:#555;line-height:1.8;">
+    <div>
+      <strong style="display:block;color:#111;margin-bottom:8px;">Sections (8)</strong>
+      01 · Navigation<br>
+      02 · Hero<br>
+      03 · About / Positioning<br>
+      04 · Services (3 pillars)<br>
+      05 · Stats Band<br>
+      06 · Why Namadok — AI Advantage<br>
+      07 · Contact / Brand Audit CTA<br>
+      08 · Footer
+    </div>
+    <div>
+      <strong style="display:block;color:#111;margin-bottom:8px;">Core Messaging</strong>
+      Focus: Ecommerce brand mgmt &amp; growth<br>
+      Differentiator: AI automation layer<br>
+      Audience: DTC, marketplace &amp; omnichannel brands<br>
+      —<br>
+      Pillar 01: Brand Management<br>
+      Pillar 02: Growth Marketing<br>
+      Pillar 03: AI Automation
+    </div>
+    <div>
+      <strong style="display:block;color:#111;margin-bottom:8px;">Key CTAs</strong>
+      Nav: "Grow My Brand"<br>
+      Hero primary: "Grow My Brand"<br>
+      Hero secondary: "See Our Work"<br>
+      About: "See How It Works"<br>
+      Contact: "Book a Brand Audit"<br>
+      —<br>
+      Tone: Confident · Precise · AI-forward
+    </div>
+    <div>
+      <strong style="display:block;color:#111;margin-bottom:8px;">Design Language</strong>
+      Flanking lines motif<br>
+      Gold accent (sparing)<br>
+      Numbered sections<br>
+      Generous whitespace<br>
+      Vertical rule dividers<br>
+      Dark ↔ Light alternation<br>
+      AI data-flow animation (hero)
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
